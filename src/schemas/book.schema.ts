@@ -6,13 +6,17 @@ import {
   isValidUrlFormat,
 } from "@/shared/utils/imageValidation";
 import { IMAGE_EXTENSIONS } from "@/shared/constants/imageExtensions";
+import { MAX_DESCRIPTION_LENGTH } from "@/shared/constants/book";
 
 export const bookSchema = z.object({
   title: z.string().min(1, "Title is required"),
   author: z.string().optional(),
   description: z
     .string()
-    .max(300, "Description must be at most 300 characters")
+    .max(
+      MAX_DESCRIPTION_LENGTH,
+      `Description must be at most ${MAX_DESCRIPTION_LENGTH} characters`,
+    )
     .optional(),
   imageUrl: z
     .string()

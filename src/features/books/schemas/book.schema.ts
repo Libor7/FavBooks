@@ -5,7 +5,7 @@ import {
   getCommaSeparatedExtensions,
   isValidUrlFormat,
 } from "@/shared/utils/imageValidation";
-import { IMAGE_EXTENSIONS } from "@/shared/constants/imageExtensions.constants";
+import { SUPPORTED_IMAGE_EXTENSIONS } from "@/shared/constants/imageExtensions.constants";
 import { MAX_BOOK_DESCRIPTION_LENGTH } from "@/shared/constants/book.constants";
 
 export const bookSchema = z.object({
@@ -23,7 +23,7 @@ export const bookSchema = z.object({
       message: "Invalid URL format, URL must start with http:// or https://",
     })
     .refine((value) => isValidImageExtension(value), {
-      message: `Image URL must point to a valid image file (${getCommaSeparatedExtensions(IMAGE_EXTENSIONS)})`,
+      message: `Image URL must point to a valid image file (${getCommaSeparatedExtensions(SUPPORTED_IMAGE_EXTENSIONS)})`,
     })
     .optional(),
 });

@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import booksReducer from "./books.slice";
+import booksReducer from "./books/slice";
 
 const store = configureStore({
   middleware: (getDefaultMiddleware) =>

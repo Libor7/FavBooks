@@ -1,8 +1,10 @@
+"use client";
+
 import { useMemo } from "react";
 
 import { useAppSelector } from "@/store/hooks";
-import { getBooks } from "@/store/books.selectors";
-import type { Book } from "@/models/book";
+import { getBooks } from "@/store/books/selectors";
+import type { Book } from "@/features/books/types/book";
 
 export const useFilteredBooks = (
   query: string,

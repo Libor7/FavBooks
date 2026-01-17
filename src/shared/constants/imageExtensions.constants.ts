@@ -1,4 +1,4 @@
-export const IMAGE_EXTENSIONS = [
+export const SUPPORTED_IMAGE_EXTENSIONS = [
   "jpg",
   "jpeg",
   "png",
@@ -7,4 +7,4 @@ export const IMAGE_EXTENSIONS = [
   "svg",
 ] as const;
 
-export const IMAGE_PROTOCOLS = ["http:", "https:"] as readonly string[];
+export const SUPPORTED_IMAGE_PROTOCOLS = ["http:", "https:"] as readonly string[];

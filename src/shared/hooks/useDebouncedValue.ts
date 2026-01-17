@@ -1,11 +1,10 @@
+"use client";
+
 import { useEffect, useState } from "react";
 
-import { DEFAULT_DEBOUNCE_MS } from "@/shared/constants/debounce.constants";
+import { DEFAULT_DELAY_MS } from "@/shared/constants/debounce.constants";
 
-export const useDebouncedValue = <T>(
-  value: T,
-  delayMs = DEFAULT_DEBOUNCE_MS,
-) => {
+export const useDebouncedValue = <T>(value: T, delayMs = DEFAULT_DELAY_MS) => {
   const [debouncedValue, setDebouncedValue] = useState(value);
 
   useEffect(() => {

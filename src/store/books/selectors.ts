@@ -1,4 +1,4 @@
-import { type RootState } from "./index";
+import { type RootState } from "../index";
 
 export const getBooks = ({ bookStore }: RootState) => bookStore.books;
 

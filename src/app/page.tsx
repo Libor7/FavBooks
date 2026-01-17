@@ -1,5 +1,3 @@
-const BooksPage = () => {
-  return <></>;
-};
+const RootPage = () => null;
 
-export default BooksPage;
+export default RootPage;

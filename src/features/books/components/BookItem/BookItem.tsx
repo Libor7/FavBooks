@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 
-import type { Book } from "@/models/book";
+import type { Book } from "@/features/books/types/book";
 import classes from "./BookItem.module.scss";
 
 type BookItemProps = {

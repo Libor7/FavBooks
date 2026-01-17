@@ -1,4 +1,4 @@
-import { IMAGE_EXTENSIONS } from "@/shared/constants/imageExtensions.constants";
+import { SUPPORTED_IMAGE_EXTENSIONS } from "@/shared/constants/imageExtensions.constants";
 import {
   isValidImageExtension,
   isValidUrlFormat,
@@ -91,7 +91,7 @@ describe("Book Schema Validation", () => {
     if (!result.success) {
       expect(result.error.issues[0].message).toBe(
         `Image URL must point to a valid image file (${getCommaSeparatedExtensions(
-          IMAGE_EXTENSIONS,
+          SUPPORTED_IMAGE_EXTENSIONS,
         )})`,
       );
       expect(result.error.issues[0].path).toEqual(["imageUrl"]);
@@ -99,7 +99,7 @@ describe("Book Schema Validation", () => {
   });
 
   it("should pass with valid image extensions (case-insensitive)", () => {
-    IMAGE_EXTENSIONS.forEach((ext) => {
+    SUPPORTED_IMAGE_EXTENSIONS.forEach((ext) => {
       const url = `https://example.com/photo.${ext.toUpperCase()}`;
       const data = { title: "Book", imageUrl: url };
       expect(bookSchema.parse(data)).toEqual(data);
@@ -119,7 +119,7 @@ describe("Image Validation Utils", () => {
   });
 
   it("isValidImageExtension returns true for valid extensions", () => {
-    IMAGE_EXTENSIONS.forEach((ext) => {
+    SUPPORTED_IMAGE_EXTENSIONS.forEach((ext) => {
       expect(isValidImageExtension(`https://example.com/image.${ext}`)).toBe(
         true,
       );
@@ -131,8 +131,8 @@ describe("Image Validation Utils", () => {
   });
 
   it("getCommaSeparatedExtensions returns correct string", () => {
-    expect(getCommaSeparatedExtensions(IMAGE_EXTENSIONS)).toBe(
-      IMAGE_EXTENSIONS.map((ext) => `.${ext}`).join(", "),
+    expect(getCommaSeparatedExtensions(SUPPORTED_IMAGE_EXTENSIONS)).toBe(
+      SUPPORTED_IMAGE_EXTENSIONS.map((ext) => `.${ext}`).join(", "),
     );
   });
 });

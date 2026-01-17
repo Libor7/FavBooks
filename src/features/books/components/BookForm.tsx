@@ -1,3 +1,5 @@
+"use client";
+
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
@@ -6,8 +8,8 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { v4 as uuidv4 } from "uuid";
 
-import { type BookFormData, bookSchema } from "@/schemas/book.schema";
-import { addBook } from "@/store/books.slice";
+import { type BookFormData, bookSchema } from "@/features/books/schemas/book.schema";
+import { addBook } from "@/store/books/slice";
 import { useAppDispatch } from "@/store/hooks";
 import CharacterCounter from "@/shared/ui/CharacterCounter";
 import { MAX_BOOK_DESCRIPTION_LENGTH } from "@/shared/constants/book.constants";

@@ -1,12 +1,14 @@
+"use client";
+
 import { useRef } from "react";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 
 import { useAppDispatch } from "@/store/hooks";
-import { selectBook } from "@/store/books.slice";
+import { selectBook } from "@/store/books/slice";
 import BookItem from "../BookItem/BookItem";
-import { type Book } from "@/models/book";
+import { type Book } from "@/features/books/types/book";
 import classes from "./BookList.module.scss";
 
 type BookListProps = {

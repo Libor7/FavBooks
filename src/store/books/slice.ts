@@ -1,6 +1,6 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
-import { type Book } from "@/models/book";
+import { type Book } from "@/features/books/types/book";
 import { MAX_BOOK_DESCRIPTION_LENGTH } from "@/shared/constants/book.constants";
 
 interface BooksState {

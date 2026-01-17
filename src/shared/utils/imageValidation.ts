@@ -1,15 +1,17 @@
 import {
-  IMAGE_EXTENSIONS,
-  IMAGE_PROTOCOLS,
+  SUPPORTED_IMAGE_EXTENSIONS,
+  SUPPORTED_IMAGE_PROTOCOLS,
 } from "@/shared/constants/imageExtensions.constants";
 
 export const isValidImageExtension = (url: string) =>
-  IMAGE_EXTENSIONS.some((ext) => url.toLowerCase().endsWith(`.${ext}`));
+  SUPPORTED_IMAGE_EXTENSIONS.some((ext) =>
+    url.toLowerCase().endsWith(`.${ext}`),
+  );
 
 export const isValidUrlFormat = (value: string) => {
   try {
     const url = new URL(value);
-    return IMAGE_PROTOCOLS.includes(url.protocol);
+    return SUPPORTED_IMAGE_PROTOCOLS.includes(url.protocol);
   } catch {
     return false;
   }

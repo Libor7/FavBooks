@@ -1,0 +1,72 @@
+import { useRef } from "react";
+import { useVirtualizer } from "@tanstack/react-virtual";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+
+import { useAppDispatch } from "@/store/hooks";
+import { selectBook } from "@/store/books.slice";
+import BookItem from "../BookItem/BookItem";
+import { type Book } from "@/models/book";
+import classes from "./BookList.module.scss";
+
+type BookListProps = {
+  books: Book[];
+};
+
+const BookList = ({ books }: BookListProps) => {
+  const dispatch = useAppDispatch();
+  const parentRef = useRef<HTMLDivElement>(null);
+
+  /**
+   * WARNING: `useVirtualizer` from @tanstack/react-virtual is not compatible with React Compiler memoization.
+   * React Compiler cannot safely memoize hooks returned by this library, so we disable the incompatible-library rule here.
+   * This is safe because:
+   *  - The virtualizer is fully controlled by props (books.length, parentRef)
+   *  - We do not memoize its return value; it's re-computed on each render
+   *  - The UI will remain consistent and performant
+   */
+  // eslint-disable-next-line react-hooks/incompatible-library
+  const rowVirtualizer = useVirtualizer({
+    count: books.length,
+    getScrollElement: () => parentRef.current,
+    estimateSize: () => 60,
+    overscan: 5,
+  });
+
+  if (books.length === 0) {
+    return <Typography color="text.secondary">No books added yet</Typography>;
+  }
+
+  return (
+    <Box
+      ref={parentRef}
+      className={classes.listContainer}
+      height={{ xs: 300, sm: 400, md: 500 }}
+    >
+      <Box
+        className={classes.virtualList}
+        height={rowVirtualizer.getTotalSize()}
+      >
+        {rowVirtualizer.getVirtualItems().map((virtualRow) => {
+          const book = books[virtualRow.index];
+
+          return (
+            <Box
+              key={book.id}
+              ref={rowVirtualizer.measureElement}
+              className={classes.virtualRow}
+              sx={{ transform: `translateY(${virtualRow.start}px)` }}
+            >
+              <BookItem
+                book={book}
+                onSelect={(id) => dispatch(selectBook(id))}
+              />
+            </Box>
+          );
+        })}
+      </Box>
+    </Box>
+  );
+};
+
+export default BookList;

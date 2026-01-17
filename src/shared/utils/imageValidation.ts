@@ -1,7 +1,7 @@
 import {
   IMAGE_EXTENSIONS,
   IMAGE_PROTOCOLS,
-} from "@/shared/constants/imageExtensions";
+} from "@/shared/constants/imageExtensions.constants";
 
 export const isValidImageExtension = (url: string) =>
   IMAGE_EXTENSIONS.some((ext) => url.toLowerCase().endsWith(`.${ext}`));

@@ -1,4 +1,4 @@
-import { IMAGE_EXTENSIONS } from "@/shared/constants/imageExtensions";
+import { IMAGE_EXTENSIONS } from "@/shared/constants/imageExtensions.constants";
 import {
   isValidImageExtension,
   isValidUrlFormat,

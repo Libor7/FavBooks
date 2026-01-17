@@ -5,7 +5,7 @@ import {
   getCommaSeparatedExtensions,
   isValidUrlFormat,
 } from "@/shared/utils/imageValidation";
-import { IMAGE_EXTENSIONS } from "@/shared/constants/imageExtensions";
+import { IMAGE_EXTENSIONS } from "@/shared/constants/imageExtensions.constants";
 import { MAX_BOOK_DESCRIPTION_LENGTH } from "@/shared/constants/book.constants";
 
 export const bookSchema = z.object({

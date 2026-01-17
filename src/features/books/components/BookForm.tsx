@@ -31,6 +31,10 @@ const BookForm = () => {
     },
   });
 
+  // React Hook Form `watch()` is not compatible with React Compiler memoization.
+  // This value is intentionally used without memoization because it reflects
+  // real-time form state and is not passed to memoized components.
+  // eslint-disable-next-line react-hooks/incompatible-library
   const descriptionValue = watch("description");
 
   const onSubmit = (data: BookFormData) => {

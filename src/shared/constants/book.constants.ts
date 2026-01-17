@@ -1,0 +1,1 @@
+export const MAX_BOOK_DESCRIPTION_LENGTH = 300;

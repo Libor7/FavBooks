@@ -1,7 +1,7 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
 import { type Book } from "@/models/book";
-import { MAX_DESCRIPTION_LENGTH } from "@/shared/constants/book";
+import { MAX_BOOK_DESCRIPTION_LENGTH } from "@/shared/constants/book.constants";
 
 interface BooksState {
   books: Book[];
@@ -18,7 +18,7 @@ const booksSlice = createSlice({
   initialState,
   reducers: {
     addBook(state, { payload: book }: PayloadAction<Book>) {
-      book.description = book.description.slice(0, MAX_DESCRIPTION_LENGTH);
+      book.description = book.description.slice(0, MAX_BOOK_DESCRIPTION_LENGTH);
       state.books.push(book);
     },
     removeBook(state, { payload: bookId }: PayloadAction<string>) {

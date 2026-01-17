@@ -5,7 +5,7 @@ import {
   getCommaSeparatedExtensions,
 } from "@/shared/utils/imageValidation";
 import { bookSchema } from "../book.schema";
-import { MAX_DESCRIPTION_LENGTH } from "@/shared/constants/book";
+import { MAX_BOOK_DESCRIPTION_LENGTH } from "@/shared/constants/book.constants";
 
 describe("Book Schema Validation", () => {
   it("should pass with valid book data", () => {
@@ -33,7 +33,7 @@ describe("Book Schema Validation", () => {
     expect(bookSchema.parse(data)).toEqual(data);
   });
 
-  it(`should fail if description exceeds ${MAX_DESCRIPTION_LENGTH} characters`, () => {
+  it(`should fail if description exceeds ${MAX_BOOK_DESCRIPTION_LENGTH} characters`, () => {
     const longDesc = "a".repeat(301);
     const result = bookSchema.safeParse({
       title: "Book",
@@ -42,14 +42,14 @@ describe("Book Schema Validation", () => {
     expect(result.success).toBe(false);
     if (!result.success) {
       expect(result.error.issues[0].message).toBe(
-        `Description must be at most ${MAX_DESCRIPTION_LENGTH} characters`,
+        `Description must be at most ${MAX_BOOK_DESCRIPTION_LENGTH} characters`,
       );
       expect(result.error.issues[0].path).toEqual(["description"]);
     }
   });
 
-  it(`should pass if description is exactly ${MAX_DESCRIPTION_LENGTH} characters`, () => {
-    const maxDesc = "a".repeat(MAX_DESCRIPTION_LENGTH);
+  it(`should pass if description is exactly ${MAX_BOOK_DESCRIPTION_LENGTH} characters`, () => {
+    const maxDesc = "a".repeat(MAX_BOOK_DESCRIPTION_LENGTH);
     const data = { title: "Book", description: maxDesc };
     expect(bookSchema.parse(data)).toEqual(data);
   });

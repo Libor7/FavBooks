@@ -4,11 +4,11 @@ import { useMemo } from "react";
 
 import { useAppSelector } from "@/store/hooks";
 import { getBooks } from "@/store/books/selectors";
-import type { Book } from "@/features/books/types/book";
+import type { Book, StringKeys } from "@/features/books/types/book";
 
 export const useFilteredBooks = (
   query: string,
-  property: keyof Book = "title",
+  property: StringKeys<Book> = "title",
 ) => {
   const books = useAppSelector(getBooks);
   const normalizedQuery = query.trim().toLowerCase();
@@ -17,12 +17,7 @@ export const useFilteredBooks = (
     if (!normalizedQuery) return books;
 
     return books.filter((book) => {
-      if (typeof book[property] !== "string") {
-        throw new Error(
-          `useFilteredBooks: property "${property}" is not a string`,
-        );
-      }
-      return book[property].toLowerCase().includes(normalizedQuery);
+      return book[property]?.toLowerCase().includes(normalizedQuery);
     });
   }, [books, normalizedQuery, property]);
 };

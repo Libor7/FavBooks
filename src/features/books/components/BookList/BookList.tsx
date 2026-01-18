@@ -56,6 +56,7 @@ const BookList = ({ books }: BookListProps) => {
             <Box
               key={book.id}
               ref={rowVirtualizer.measureElement}
+              data-index={virtualRow.index}
               className={classes.virtualRow}
               sx={{ transform: `translateY(${virtualRow.start}px)` }}
             >

@@ -4,11 +4,14 @@ import {
 } from "@/shared/constants/imageExtensions.constants";
 
 export const isValidImageExtension = (url: string) =>
+  url === "" ||
   SUPPORTED_IMAGE_EXTENSIONS.some((ext) =>
     url.toLowerCase().endsWith(`.${ext}`),
   );
 
 export const isValidUrlFormat = (value: string) => {
+  if (value === "") return true;
+
   try {
     const url = new URL(value);
     return SUPPORTED_IMAGE_PROTOCOLS.includes(url.protocol);

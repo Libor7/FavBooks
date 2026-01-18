@@ -19,13 +19,13 @@ export const bookSchema = z.object({
     ),
   imageUrl: z
     .string()
-    .refine((value) => isValidUrlFormat(value), {
+    .optional()
+    .refine((value) => !value || isValidUrlFormat(value), {
       message: "Invalid URL format, URL must start with http:// or https://",
     })
-    .refine((value) => isValidImageExtension(value), {
+    .refine((value) => !value || isValidImageExtension(value), {
       message: `Image URL must point to a valid image file (${getCommaSeparatedExtensions(SUPPORTED_IMAGE_EXTENSIONS)})`,
-    })
-    .optional(),
+    }),
 });
 
 export type BookFormData = z.infer<typeof bookSchema>;

@@ -14,7 +14,7 @@ const CharacterCounter = ({
     <Box display="flex" justifyContent="flex-end">
       <Typography
         variant="caption"
-        color={currentLength > maxLength ? "error" : "text.secondary"}
+        color={currentLength >= maxLength ? "error" : "text.secondary"}
       >
         {currentLength} / {maxLength}
       </Typography>

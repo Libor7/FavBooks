@@ -4,8 +4,8 @@
   position: relative;
   overflow: hidden;
   width: 100vw;
-  height: 100vh;
-  max-height: 100vh;
+  height: 100dvh;
+  max-height: 100dvh;
 
   // Note: CSS custom properties (`var(--...)`) do **not work** inside media queries.
   // For @media, you must use a concrete value with units, e.g., 600px.

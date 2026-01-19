@@ -1,4 +1,4 @@
-import type { Config } from "jest";
+import { Config } from "jest";
 import { createDefaultPreset } from "ts-jest";
 
 const alias = {

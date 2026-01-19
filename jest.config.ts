@@ -1,4 +1,4 @@
-import { Config } from "jest";
+import type { Config } from "@jest/types";
 import { createDefaultPreset } from "ts-jest";
 
 const alias = {
@@ -8,8 +8,8 @@ const alias = {
 
 const tsJestTransformCfg = createDefaultPreset().transform;
 
-const config: Config = {
-  testEnvironment: "node",
+const config: Config.InitialOptions = {
+  testEnvironment: "jsdom",
   transform: {
     ...tsJestTransformCfg,
   },

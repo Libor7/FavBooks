@@ -12,10 +12,7 @@ const CharacterCounter = ({
 }: CharacterCounterProps) => {
   return (
     <Box display="flex" justifyContent="flex-end">
-      <Typography
-        variant="caption"
-        color={currentLength >= maxLength ? "error" : "text.secondary"}
-      >
+      <Typography variant="caption">
         {currentLength} / {maxLength}
       </Typography>
     </Box>

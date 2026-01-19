@@ -1,16 +1,15 @@
 .listContainer {
-  background-color: var(--mui-background-paper);
-  border-radius: 4px;
   overflow-y: auto;
-  width: 100%;
+  height: 100%;
 }
 
 .virtualList {
   position: relative;
-  width: 100%;
 }
 
 .virtualRow {
+  background-color: var(--mui-palette-primary-main);
+  color: var(--mui-palette-primary-contrastText);
   position: absolute;
   left: 0;
   top: 0;

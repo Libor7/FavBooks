@@ -1,0 +1,59 @@
+.bookDetailCard {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  max-height: 100vh;
+
+  // Note: CSS custom properties (`var(--...)`) do **not work** inside media queries.
+  // For @media, you must use a concrete value with units, e.g., 600px.
+  // To use dynamic breakpoints, rely on MUI's `theme.breakpoints` in `sx` or styled components.
+  @media (min-width: 601) {
+    width: 500px;
+    height: auto;
+    max-height: 600px;
+  }
+}
+
+.bookDetailContainer {
+  gap: 24px;
+}
+
+.imageContainer {
+  width: 100%;
+  max-width: 300px;
+  aspect-ratio: 4 / 5;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--mui-palette-background-default);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (min-width: 601) {
+    width: 240px;
+  }
+}
+
+.fallbackText {
+  letter-spacing: 2;
+  opacity: 0.6;
+  user-select: none;
+}
+
+.bookDetailContent {
+  gap: 1em;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+}
+
+.cardActions {
+  justify-content: flex-end;
+  gap: 1;
+}

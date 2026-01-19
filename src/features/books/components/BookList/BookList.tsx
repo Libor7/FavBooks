@@ -3,13 +3,13 @@
 import { useRef } from "react";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
 
 import { useAppDispatch } from "@/store/hooks";
 import { selectBook } from "@/store/books/slice";
 import BookItem from "../BookItem/BookItem";
 import { type Book } from "@/features/books/types/book";
 import classes from "./BookList.module.scss";
+import EmptyState from "@/shared/ui/EmptyState/EmptyState";
 
 type BookListProps = {
   books: Book[];
@@ -32,19 +32,16 @@ const BookList = ({ books }: BookListProps) => {
     count: books.length,
     getScrollElement: () => parentRef.current,
     estimateSize: () => 60,
-    overscan: 5,
+    gap: 4,
+    overscan: 50,
   });
 
   if (books.length === 0) {
-    return <Typography color="text.secondary">No books added yet</Typography>;
+    return <EmptyState message="No books added yet" />;
   }
 
   return (
-    <Box
-      ref={parentRef}
-      className={classes.listContainer}
-      height={{ xs: 300, sm: 400, md: 500 }}
-    >
+    <Box ref={parentRef} className={classes.listContainer}>
       <Box
         className={classes.virtualList}
         height={rowVirtualizer.getTotalSize()}

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { type PropsWithChildren } from "react";
 
-import ReduxProvider from "@/shared/providers/ReduxProvider";
+import AppProviders from "@/shared/providers/AppProviders";
 import "./globals.scss";
 
 export const metadata: Metadata = {
@@ -13,7 +13,7 @@ const RootLayout = ({ children }: PropsWithChildren) => {
   return (
     <html lang="en">
       <body>
-        <ReduxProvider>{children}</ReduxProvider>
+        <AppProviders>{children}</AppProviders>
       </body>
     </html>
   );

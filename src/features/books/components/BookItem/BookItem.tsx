@@ -1,5 +1,5 @@
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemText from "@mui/material/ListItemText";
 
 import type { Book } from "@/features/books/types/book";
 import classes from "./BookItem.module.scss";
@@ -9,17 +9,19 @@ type BookItemProps = {
   onSelect: (id: string) => void;
 };
 
-const BookItem = ({ book, onSelect }: BookItemProps) => {
-  const { id, title } = book;
-
+const BookItem = ({ book: { id, title }, onSelect }: BookItemProps) => {
   return (
-    <Box
-      role="button"
+    <ListItemButton
       className={classes.bookItem}
       onClick={() => onSelect(id)}
+      sx={{
+        "&:hover": {
+          backgroundColor: (theme) => theme.palette.primary.dark,
+        },
+      }}
     >
-      <Typography variant="body1">{title}</Typography>
-    </Box>
+      <ListItemText primary={title} />
+    </ListItemButton>
   );
 };
 

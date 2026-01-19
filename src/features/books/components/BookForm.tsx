@@ -8,7 +8,10 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { v4 as uuidv4 } from "uuid";
 
-import { type BookFormData, bookSchema } from "@/features/books/schemas/book.schema";
+import {
+  type BookFormData,
+  bookSchema,
+} from "@/features/books/schemas/book.schema";
 import { addBook } from "@/store/books/slice";
 import { useAppDispatch } from "@/store/hooks";
 import CharacterCounter from "@/shared/ui/CharacterCounter";
@@ -52,7 +55,7 @@ const BookForm = () => {
 
   return (
     <Box component="form" onSubmit={handleSubmit(onSubmit)} noValidate>
-      <Stack spacing={3}>
+      <Stack spacing={4}>
         <TextField
           label="Title"
           fullWidth
@@ -92,6 +95,7 @@ const BookForm = () => {
           error={!!errors.imageUrl}
           helperText={errors.imageUrl?.message}
           {...register("imageUrl")}
+          placeholder="https://www.example.com/picture.jpg"
         />
         <Button type="submit" variant="contained" disabled={isSubmitting}>
           Add book
